@@ -42,17 +42,17 @@ export async function createRoom(params:Partial<Room> = {}){
             {
                 name: params.name || faker.lorem.sentence(),
                 capacity: faker.datatype.number({ min: 1, max: 5 }),
-                hotelId: hotels[0].id || 2
+                hotelId: hotels[1].id || 2
             },
             {
                 name: params.name || faker.lorem.sentence(),
                 capacity: faker.datatype.number({ min: 1, max: 5 }),
-                hotelId: hotels[0].id || 2
+                hotelId: hotels[1].id || 2
             },
             {
                 name: params.name || faker.lorem.sentence(),
                 capacity: faker.datatype.number({ min: 1, max: 5 }),
-                hotelId: hotels[0].id || 2
+                hotelId: hotels[1].id || 2
             }
         ]
     })
