@@ -10,7 +10,11 @@ export async function validateSteps(req: AuthenticatedRequest, res: Response, ne
   
     try {
       await enrollmentsService.getOneWithAddressByUserId(userId);
-      await getAllHotels();
+      const hotels = await getAllHotels();
+
+      if(hotels.length === 0){
+        return res.sendStatus(httpStatus.NOT_FOUND);
+      };
 
       const ticket = await ticketService.getTicketByUserId(userId);
 

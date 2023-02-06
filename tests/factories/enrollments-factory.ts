@@ -17,12 +17,12 @@ export async function createEnrollmentWithAddress(user?: User) {
       userId: incomingUser.id,
       Address: {
         create: {
-          street: faker.address.streetName(),
           cep: faker.address.zipCode(),
+          street: faker.address.streetName(),
           city: faker.address.city(),
-          neighborhood: faker.address.city(),
           number: faker.datatype.number().toString(),
           state: faker.helpers.arrayElement(getStates()).name,
+          neighborhood: faker.address.city(),
         },
       },
     },

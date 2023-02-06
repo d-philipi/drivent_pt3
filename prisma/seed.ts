@@ -52,7 +52,7 @@ async function main() {
     })
   }
 
-  let rooms: any = await prisma.room.findMany();
+  let rooms: any = await prisma.room.findFirst();
   if(!rooms){
     rooms = await prisma.room.createMany({
       data : [
