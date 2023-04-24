@@ -2,13 +2,7 @@ import { Hotel } from '@prisma/client';
 import { prisma } from '@/config';
 
 async function getAllHotels(): Promise<resultHotel[]> {
-  const result = await prisma.hotel.findMany({
-    select: {
-      id: true,
-      name: true,
-      image: true,
-    },
-  });
+  const result = await prisma.hotel.findMany();
 
   return result;
 }
@@ -35,5 +29,8 @@ async function getHotelById(id: number) {
 
   return result;
 }
-
-export { getAllHotels, getHotelById };
+const hotelsRepository = {
+  getAllHotels,
+  getHotelById,
+};
+export default hotelsRepository;
