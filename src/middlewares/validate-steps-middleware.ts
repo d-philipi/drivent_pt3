@@ -1,7 +1,7 @@
 import { NextFunction, Response } from 'express';
 import httpStatus from 'http-status';
 import { AuthenticatedRequest } from './authentication-middleware';
-import { getAllHotels } from '@/repositories/hotels-repository';
+import hotelsRepository from '@/repositories/hotels-repository';
 import enrollmentsService from '@/services/enrollments-service';
 import ticketService from '@/services/tickets-service';
 
@@ -10,7 +10,7 @@ export async function validateSteps(req: AuthenticatedRequest, res: Response, ne
 
   try {
     await enrollmentsService.getOneWithAddressByUserId(userId);
-    const hotels = await getAllHotels();
+    const hotels = await hotelsRepository.getAllHotels();
 
     if (hotels.length === 0) {
       return res.sendStatus(httpStatus.NOT_FOUND);
